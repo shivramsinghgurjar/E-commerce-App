@@ -9,7 +9,7 @@ export default function Index() {
         alignItems: "center",
       }}
     >
-      <Text>Sar Dard</Text>
+      <Text>E Commerce Application</Text>
     </View>
   );
 }
