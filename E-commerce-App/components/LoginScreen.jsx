@@ -4,7 +4,7 @@ import React from 'react'
 export default function LoginScreen() {
   return (
     <View>
-      <Text>LoginScreen Open</Text>
+      <Text>LoginScreen</Text>
     </View>
   )
 }
