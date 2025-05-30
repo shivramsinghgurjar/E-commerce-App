@@ -1,8 +1,8 @@
-import { View, Text, Image } from 'react-native'
+import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native'
 import React from 'react'
 import { Colors } from '@/constants/Colors'
-//import { Colors } from 'react-native/Libraries/NewAppScreen'
-// import {Colors} from './../../constants/Colors'
+
+
 
 export default function LoginScreen() {
   return (
@@ -10,7 +10,7 @@ export default function LoginScreen() {
       <View style={{
         display:'flex',
         alignItems:'center',
-        margin:100
+        marginTop:100
       }}>
         <Image source={require('./../assets/images/login.jpg')} 
           style={{
@@ -23,12 +23,42 @@ export default function LoginScreen() {
         />
       </View>
 
-      <View style={{backgroundColor:'#fff', padding:20}}>
-        <Text>Your Ultimate 
+      <View style={styles.subContainer}>
+        <Text style={{
+          fontSize:35,
+          fontFamily:'outfit-bold',
+          textAlign:'center'
+        }}>YOUR ULTIMATE
           <Text style={{
             color:Colors.PRIMARY
-          }}>E-commerce</Text> App</Text>
+          }}> E-COMMERCE</Text> APP</Text>
+          <Text style={{
+            fontSize:15,
+            fontFamily:'outfit',
+            textAlign:'center',
+            marginVertical:15,
+            color:Colors.GREY
+          }}>FIND YOUR FAVOURITE HANDICRAFT WORK COMMUNITY AND CONNECT</Text>
+          <TouchableOpacity style={styles.btn}>
+            <Text style={{
+              textAlign:'center',
+              fontSize:18,
+              color:'#fff',
+              fontFamily:'outfit'
+            }}>Get Started</Text>
+          </TouchableOpacity>
       </View>
     </View>
   )
 }
+const styles = StyleSheet.create({
+  subContainer:{backgroundColor:'#fff', padding:20,
+    marginTop:-20,
+  },
+  btn:{
+    backgroundColor:Colors.PRIMARY,
+    padding:10,
+    borderRadius:80,
+    marginTop:20
+  }
+})
