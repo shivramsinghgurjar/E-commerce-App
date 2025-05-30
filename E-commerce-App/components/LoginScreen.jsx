@@ -53,7 +53,7 @@ export default function LoginScreen() {
 }
 const styles = StyleSheet.create({
   subContainer:{backgroundColor:'#fff', padding:20,
-    marginTop:-20,
+    marginTop:-50,
   },
   btn:{
     backgroundColor:Colors.PRIMARY,
