@@ -1,10 +1,35 @@
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native'
 import React from 'react'
 import { Colors } from '@/constants/Colors'
+import * as WebBrowser from  "expo-web-browser";
+import { useWarmUpBrowser } from "../hooks/useWarmUPBrowser";
+import { useOAuth } from '@clerk/clerk-expo';
+import { router, useRouter } from "expo-router";
 
 
-
+WebBrowser.maybeCompleteAuthSession();
 export default function LoginScreen() {
+  useWarmUpBrowser();
+
+  const { startOAuthFlow } = useOAuth({strategy: "oauth_google"});
+
+  const onPress = React.useCallback(async () => {
+    try {
+      const { createdSessionId, signIn, signUp, setActive } = 
+        await startOAuthFlow();
+
+      if (createdSessionId) {
+        setActive({session: createdSessionId});
+        // 🚀 Navigate to the home page after successful sign-in!
+        router.replace("/");
+      } else {
+        // use signIn or signUp for next steps such as MFA
+      }
+    } catch (err) {
+      console.error("OAuth error", err);
+    }
+  }, [router]);
+
   return (
     <View>
       <View style={{
@@ -39,7 +64,9 @@ export default function LoginScreen() {
             marginVertical:15,
             color:Colors.GREY
           }}>FIND YOUR FAVOURITE HANDICRAFT WORK COMMUNITY AND CONNECT</Text>
-          <TouchableOpacity style={styles.btn}>
+          <TouchableOpacity style={styles.btn}
+          onPress={onPress}
+          >
             <Text style={{
               textAlign:'center',
               fontSize:18,
