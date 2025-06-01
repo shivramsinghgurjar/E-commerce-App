@@ -21,8 +21,8 @@ export default function Slider() {
       <Text style={{
         fontFamily:'outfit-bold',
         fontSize:20,
-        paddingLeft:20,
-        paddingTop:20,
+        paddingLeft:15,
+        paddingTop:15,
         marginBottom:5
       }
       }>

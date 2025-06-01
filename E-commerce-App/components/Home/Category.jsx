@@ -1,7 +1,7 @@
 import { View, Text, FlatList } from 'react-native'
 import React, {useEffect , useState} from 'react'
 import { Colors } from './../../constants/Colors'
-import { collection , getDoc , getDocs, query  } from 'firebase/firestore'
+import { collection , getDocs, query  } from 'firebase/firestore'
 import {db} from '../../config/FirebaseConfig'
 import CategoryItem from './CategoryItem'
 export default function Category() {
@@ -20,7 +20,7 @@ export default function Category() {
   }
   return (
     <View>
-        <View style={{padding:20,display:'flex',flexDirection:'row',justifyContent:'space-between',marginTop:10}}>
+        <View style={{padding:15,display:'flex',flexDirection:'row',justifyContent:'space-between',marginTop:10}}>
       <Text style={{
         fontSize:20,
         fontFamily:'outfit-bold'
@@ -29,13 +29,18 @@ export default function Category() {
         </Text>
           <Text style={{color:Colors.PRIMARY, fontFamily:'outfit-medium'}}>View All</Text>
           </View>
+          
           <FlatList 
           data={categoryList}
           horizontal={true}
           showsHorizontalScrollIndicator={false}
           style={{marginLeft:20}}
           renderItem={({item,index})=>(
-              <CategoryItem category={item} key={index}/>
+              <CategoryItem
+               category={item} 
+              key={index}
+              onCategoryPress={(category)=>console.log(category.name)}
+              />
           )}/>
     </View>
   )
