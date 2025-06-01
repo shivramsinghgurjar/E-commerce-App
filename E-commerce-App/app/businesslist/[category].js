@@ -1,77 +1,74 @@
+import { View, Text, FlatList, ActivityIndicator } from 'react-native'
+import React, { useEffect, useState } from 'react'
+import { useLocalSearchParams, useNavigation } from 'expo-router'
+import { collection, getDoc, query, where } from 'firebase/firestore';
+import { db } from '../../config/FirebaseConfig';
+import BusinessListCard from '../../components/BusinessList/BusinessListCard';
+import { Colors } from '../../constants/Colors';
 
 
-
-// import { View, Text, FlatList, ActivityIndicator } from 'react-native'
-// import React, { useEffect, useState } from 'react'
-// import { useLocalSearchParams, useNavigation } from 'expo-router'
-// import { collection, getDoc, query, where } from 'firebase/firestore';
-// import { db } from '../../config/FirebaseConfig';
-// import BusinessListCard from '../../components/BusinessList/BusinessListCard';
-// import { Colors } from '../../constants/Colors';
-
-
-// export default function BusinessListByCategory() {  
+export default function BusinessListByCategory() {  
     
-//     const navigation = useNavigation();
-//     const {category} = useLocalSearchParams();
+    const navigation = useNavigation();
+    const {category} = useLocalSearchParams();
 
-//     const [businessList, setBusinessList] = useState([]);
-//     const [loading, setLoading] = useState(false);
-//     useEffect(() => {
-//         navigation.setOptions({
-//             headerShown:true,
-//             headerTitle:category
-//         });
-//         getBusinessList();
-//     },[]);
+    const [businessList, setBusinessList] = useState([]);
+    const [loading, setLoading] = useState(false);
+    useEffect(() => {
+        navigation.setOptions({
+            headerShown:true,
+            headerTitle:category
+        });
+        getBusinessList();
+    },[]);
 
-//     /**
-//      * Used to get business list by category
-//      */
+    /**
+     * Used to get business list by category
+     */
 
-//     const getBusinessList=async()=>{
-//         const q=query(collection(db,'BusinessList'), where("category",'==',category));
-//         const querySnapshot = await getDoc(q);
+    const getBusinessList=async()=>{
+        const q=query(collection(db,'BusinessList'), where("category",'==',category));
+        const querySnapshot = await getDoc(q);
 
-//         querySnapshot.forEach((doc)=>{
-//             console.log(doc.data())
-//             setBusinessList(prev=>[...prev,doc.data()])
-//         })
-//         setLoading(false);
-//     }
+        querySnapshot.forEach((doc)=>{
+            console.log(doc.data())
+            setBusinessList(prev=>[...prev,doc.data()])
+        })
+        setLoading(false);
+    }
 
-//     return (
-//     <View>
+    return (
+    <View>
 
-//       {businessList?.length>0&&loading==false? 
-//       <FlatList
-//         data={businessList}
-//         onRefresh={getBusinessList}
-//         refreshing={loading}
-//         renderItem={({item,index})=>(
-//             <BusinessListCard 
-//                 business={item}
-//                 key={index}
-//             />
-//         )}
+      {businessList?.length>0&&loading==false? 
+      <FlatList
+        data={businessList}
+        onRefresh={getBusinessList}
+        refreshing={loading}
+        renderItem={({item,index})=>(
+            <BusinessListCard 
+                business={item}
+                key={index}
+            />
+        )}
       
-//       />:
-//       loading?<ActivityIndicator
-//       style={{
-//         marginTop:'60%'
-//       }}
-//         size={'large'}
-//         color={Colors.PRIMARY}
-//       />:
-//       <Text style={{
-//         fontSize:20,
-//         fontFamily:'outfit-bold',
-//         color:Colors.GREY,
-//         textAlign:'center',
-//         marginTop:'50%'
-//       }}>
-//         No Business Found
-//       </Text>}
-//     </View>
-//   )
-// }
+      />:
+      loading?<ActivityIndicator
+      style={{
+        marginTop:'60%'
+      }}
+        size={'large'}
+        color={Colors.PRIMARY}
+      />:
+      <Text style={{
+        fontSize:20,
+        fontFamily:'outfit-bold',
+        color:Colors.GREY,
+        textAlign:'center',
+        marginTop:'50%'
+      }}>
+        No Business Found
+      </Text>}
+    </View>
+  )
+}
