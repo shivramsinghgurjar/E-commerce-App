@@ -63,7 +63,7 @@ export default function LoginScreen() {
             textAlign:'center',
             marginVertical:15,
             color:Colors.GREY
-          }}>FIND YOUR FAVOURITE HANDICRAFT WORK COMMUNITY AND CONNECT</Text>
+          }}>FIND YOUR FAVOURITE HANDICRAFT WORK COMMUNITY AND CONNECT Abcedfg</Text>
           <TouchableOpacity style={styles.btn}
           onPress={onPress}
           >
