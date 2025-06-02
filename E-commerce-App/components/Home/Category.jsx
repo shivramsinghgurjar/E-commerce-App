@@ -24,7 +24,7 @@ export default function Category() {
   }
   return (
     <View>
-        <View style={{padding:15,display:'flex',flexDirection:'row',justifyContent:'space-between',marginTop:10}}>
+        <View style={{paddingLeft:15, marginBottom:10,display:'flex',flexDirection:'row',justifyContent:'space-between',marginTop:10}}>
       <Text style={{
         fontSize:20,
         fontFamily:'outfit-bold'

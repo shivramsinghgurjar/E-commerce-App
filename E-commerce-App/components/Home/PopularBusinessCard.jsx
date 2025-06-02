@@ -29,13 +29,27 @@ export default function PopularBusinessCard({business}) {
             color:Colors.GREY
         }}>
             {business.address}</Text>
-            <View>
-                {/* <Image source={require('./../../assets/images/star.png')}
+            <View style={{
+              display:'flex',
+              flexDirection:'row',
+              justifyContent :'space-between'
+
+            }}>
+            <View style={{display:'flex',flexDirection:'row',gap:5}}>
+                <Image source={require('./../../assets/images/star.png')}
                 style={{
-                    width:1,
-                    heigth:1
-                }}/> */}
-                <Text>4.5</Text>
+                    width:15,
+                    height:15
+                }}/> 
+                <Text style={{fontFamily:'outfit'}}>4.5</Text>
+            </View>
+            <Text 
+            style={{fontFamily:'outfit',backgroundColor:Colors.PRIMARY,
+              padding:3,
+              color:'#fff', 
+              fontSize:12, 
+              borderRadius:5
+            }}>{business.category}</Text>
             </View>
       </View>
     </View>

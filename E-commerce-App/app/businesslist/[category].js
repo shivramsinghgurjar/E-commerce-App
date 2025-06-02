@@ -1,7 +1,7 @@
 import { View, Text, FlatList, ActivityIndicator } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { useLocalSearchParams, useNavigation } from 'expo-router'
-import { collection, getDoc, query, where } from 'firebase/firestore';
+import { collection, getDoc, getDocs, query, where } from 'firebase/firestore';
 import { db } from '../../config/FirebaseConfig';
 import BusinessListCard from '../../components/BusinessList/BusinessListCard';
 import { Colors } from '../../constants/Colors';
@@ -27,12 +27,13 @@ export default function BusinessListByCategory() {
      */
 
     const getBusinessList=async()=>{
-        const q=query(collection(db,'BusinessList'), where("category",'==',category));
-        const querySnapshot = await getDoc(q);
+      setLoading(true)
+        const q=query(collection(db,'E-commerceList'), where("category",'==',category));
+        const querySnapshot = await getDocs(q);
 
         querySnapshot.forEach((doc)=>{
             console.log(doc.data())
-            setBusinessList(prev=>[...prev,doc.data()])
+            setBusinessList(prev=>[...prev,{id:doc?.id,...doc.data()}])
         })
         setLoading(false);
     }
@@ -40,7 +41,7 @@ export default function BusinessListByCategory() {
     return (
     <View>
 
-      {businessList?.length>0&&loading==false? 
+      {businessList?.length>0&&loading===false? 
       <FlatList
         data={businessList}
         onRefresh={getBusinessList}
