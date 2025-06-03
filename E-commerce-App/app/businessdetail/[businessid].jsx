@@ -24,7 +24,7 @@ export default function BusinessDetail() {
     const docSnap=await getDoc(docRef);
     if(docSnap.exists())
     {
-      setBusiness(docSnap.data());
+      setBusiness({id:docSnap.id,...docSnap.data()});
       setLoading(false)
     }  
     else
