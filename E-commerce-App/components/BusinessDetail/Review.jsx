@@ -1,4 +1,4 @@
-import { View, Text, TextInput } from 'react-native'
+import { View, Text, TextInput, TouchableOpacity } from 'react-native'
 import React from 'react'
 import {Rating} from 'react-native-ratings'
 import { useState } from 'react'
@@ -33,7 +33,11 @@ export default function Review({business}) {
            borderColor:Colors.GREY,
             textAlignVertical:'top',
             minHeight:100
-           }}/>
+           }}
+           />
+           <TouchableOpacity>
+            
+           </TouchableOpacity>
          </View>
     </View>
   )
