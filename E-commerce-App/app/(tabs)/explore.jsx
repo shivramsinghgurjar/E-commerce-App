@@ -9,6 +9,7 @@ import ExploreBusinessList from '../../components/Explore/ExploreBusinessList';
 export default function explore() {
   const [businessList,setBusinessList]=useState([])
   const GetBusinessByCategory=async(category)=>{
+    setBusinessList([]);
     const q=query(collection(db,'E-commerceList'), where('category','==',category))
     const querySnapshot=await getDocs(q);
     querySnapshot.forEach((doc)=>{
