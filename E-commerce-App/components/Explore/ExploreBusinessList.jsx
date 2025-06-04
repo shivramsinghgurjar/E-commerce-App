@@ -2,15 +2,17 @@ import { View, Text, FlatList, ScrollView } from 'react-native'
 import React from 'react'
 import BusinessListCard from './BusinessListCard'
 
-export default function ExploreBusinessList({ businessList }) {
+export default function ExploreBusinessList({businessList}) {
   return (
-    <ScrollView>
+    <View>
       <FlatList
         data={businessList}
         scrollEnabled
-        renderItem={({ item, index }) => (
+        showsVerticalScrollIndicator={true}
+        //keyExtractor={(item)=>item.id}
+        renderItem={({ item }) => (
           <BusinessListCard 
-            key={index}
+            key={item.id}
             business={item}
           />
         )}
@@ -20,6 +22,6 @@ export default function ExploreBusinessList({ businessList }) {
       }}>
 
       </View>
-    </ScrollView>
+      </View>
   )
 }
