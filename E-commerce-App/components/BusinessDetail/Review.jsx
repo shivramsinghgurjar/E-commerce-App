@@ -31,7 +31,8 @@ export default function Review({business}) {
     
     <View style={{
         padding:20,
-        backgroundColor:'#fff'
+        backgroundColor:'#fff',
+        marginBottom:70
     }}>
       <Text style={{ 
         fontSize: 20,
@@ -78,7 +79,9 @@ export default function Review({business}) {
 
          <View>
           {business?.reviews?.map((item,index)=>(
-            <View style={{
+            <View 
+            key={index}
+            style={{
               display:'flex',
               flexDirection:'row',
               gap:10,

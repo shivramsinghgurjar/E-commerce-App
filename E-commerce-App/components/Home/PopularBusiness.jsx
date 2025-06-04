@@ -29,7 +29,7 @@ export default function PopularBusiness() {
             }}>
               Popular Business
               </Text>
-                <Text style={{color:Colors.PRIMARY, fontFamily:'outfit-medium'}}>View All</Text>
+                <Text style={{color:Colors.PRIMARY, fontFamily:'outfit-medium', marginRight:10}}>View All</Text>
                 </View>
                 <FlatList
                     data={businessList}

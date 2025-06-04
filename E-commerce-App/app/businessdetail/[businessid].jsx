@@ -8,7 +8,9 @@ import NewIntro from '../../components/BusinessDetail/NewIntro';
 import ActionButton from '../../components/BusinessDetail/ActionButton';
 import About from '../../components/BusinessDetail/About';
 import Review from '../../components/BusinessDetail/Review';
-import { KeyboardAvoidingView, Platform } from 'react-native';
+//import { KeyboardAvoidingView, Platform } from 'react-native';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+
 
 export default function BusinessDetail() {
   const { businessid } = useLocalSearchParams();
@@ -34,12 +36,13 @@ export default function BusinessDetail() {
 
   }
   return (
-     <KeyboardAvoidingView
-    behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-    style={{ flex: 1 }}
-    keyboardVerticalOffset={Platform.OS === 'android' ? 10 : 0}
-  >
-    <ScrollView >
+   <KeyboardAwareScrollView
+  style={{ flex: 1, backgroundColor: '#fff' }}
+  contentContainerStyle={{ paddingBottom: 20 }}
+  enableOnAndroid={true}
+  keyboardShouldPersistTaps="handled"
+  extraScrollHeight={100}
+>
       {loading?
       <ActivityIndicator
       style={{
@@ -47,7 +50,7 @@ export default function BusinessDetail() {
       }}
       size={'large'}
       color={Colors.PRIMARY}/>:
-      <View>
+      <>
         <NewIntro business={business}/>
         {
           // intro
@@ -57,9 +60,8 @@ export default function BusinessDetail() {
         <ActionButton business={business}/>
         <About business={business}/>
         <Review business={business}/>
-      </View>
-    }
-    </ScrollView>
-    </KeyboardAvoidingView>
+      </>}
+
+    </KeyboardAwareScrollView>
   );
 }

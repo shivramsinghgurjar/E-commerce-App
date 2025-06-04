@@ -7,7 +7,7 @@ import CategoryItem from './CategoryItem'
 import { useRouter } from 'expo-router'
 
 
-export default function Category() {
+export default function Category({explore=false,onCategorySelect}) {
   const [categoryList,setCategoryList]=useState([]);
   const router = useRouter();
   useEffect(()=>{
@@ -22,8 +22,18 @@ export default function Category() {
       setCategoryList(prev=>[...prev,doc.data()])
     })
   }
+  const onCategoryPressPressHandle=(item)=>{
+    if(!explore)
+    {
+      router.push('/businesslist/'+item.name)
+    }else{
+      onCategorySelect(item.name)
+
+    }
+  }
   return (
     <View>
+      {!explore&&
         <View style={{paddingLeft:15, marginBottom:10,display:'flex',flexDirection:'row',justifyContent:'space-between',marginTop:10}}>
       <Text style={{
         fontSize:20,
@@ -31,8 +41,8 @@ export default function Category() {
       }}>
         Category
         </Text>
-          <Text style={{color:Colors.PRIMARY, fontFamily:'outfit-medium'}}>View All</Text>
-          </View>
+          <Text style={{color:Colors.PRIMARY, fontFamily:'outfit-medium', marginRight:10}}>View All</Text>
+          </View>}
           
           <FlatList 
           data={categoryList}
@@ -43,7 +53,10 @@ export default function Category() {
               <CategoryItem
                category={item} 
               key={index}
-              onCategoryPress={(category)=>router.push('/businesslist/'+item.name)}
+              onCategoryPress={(item)=>
+                onCategoryPressPressHandle(item)
+              }
+                
               />
           )}/>
     </View>
