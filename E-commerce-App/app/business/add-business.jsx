@@ -11,6 +11,14 @@ export default function AddBusiness() {
     const navigation = useNavigation();
     const [image, setImage] = useState(null);
     const [categoryList,setCategoryList]=useState([]);
+
+    const [name,setName]=useState();
+    const [address,setAddress]=useState();
+    const [contact,setContact]=useState();
+    const [website,setWebsite]=useState();
+    const [about,setAbout]=useState();
+    const [category,setCategory]=useState();
+
     useEffect(() => {
         navigation.setOptions({
             headerTitle: 'Add New Business',
@@ -77,6 +85,7 @@ export default function AddBusiness() {
 
             <View>
                 <TextInput placeholder='Name'
+                onChangeText={(v)=>setName(v)}
                     style={{
                         padding: 10,
                         borderWidth: 1,
@@ -89,6 +98,7 @@ export default function AddBusiness() {
                     }}
                 />
                 <TextInput placeholder='Address'
+                  onChangeText={(v)=>setAddress(v)}
                     style={{
                         padding: 10,
                         borderWidth: 1,
@@ -101,6 +111,7 @@ export default function AddBusiness() {
                     }}
                 />
                 <TextInput placeholder='Contact'
+                  onChangeText={(v)=>setCategory(v)}
                     style={{
                         padding: 10,
                         borderWidth: 1,
@@ -112,7 +123,8 @@ export default function AddBusiness() {
                         fontFamily: 'outfit'
                     }}
                 />
-                <TextInput placeholder='Email'
+                <TextInput placeholder='Website'
+                  onChangeText={(v)=>setWebsite(v)}
                     style={{
                         padding: 10,
                         borderWidth: 1,
@@ -125,6 +137,7 @@ export default function AddBusiness() {
                     }}
                 />
                 <TextInput placeholder='About'
+                  onChangeText={(v)=>setAbout(v)}
                     multiline
                     numberOfLines={5}
                     style={{
@@ -148,11 +161,24 @@ export default function AddBusiness() {
                         borderColor: Colors.PRIMARY
                     }}>
                     <RNPickerSelect
-                        onValueChange={(value) => console.log(value)}
+                        onValueChange={(value) => setCategory(value)}
                         items={categoryList}
                     />
                 </View>
             </View>
+            <TouchableOpacity style={{
+                padding:15,
+                backgroundColor:Colors.PRIMARY,
+                marginTop:20,
+                borderRadius:5
+
+            }}>
+                <Text style={{
+                    textAlign:'center',
+                    fontFamily:'outfit-medium',
+                    color:'#fff'
+                }}>Add New Business</Text>
+            </TouchableOpacity>
         </View>
     )
 }
