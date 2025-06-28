@@ -1,27 +1,57 @@
 import { View, Text, FlatList, ScrollView } from 'react-native'
 import React from 'react'
 import BusinessListCard from './BusinessListCard'
+import { Colors } from '../../constants/Colors'
 
-export default function ExploreBusinessList({businessList}) {
+export default function ExploreBusinessList({businessList, searchQuery}) {
   return (
     <View>
-      <FlatList
-        data={businessList}
-        scrollEnabled
-        showsVerticalScrollIndicator={true}
-        //keyExtractor={(item)=>item.id}
-        renderItem={({ item }) => (
-          <BusinessListCard 
-            key={item.id}
-            business={item}
-          />
-        )}
-      />
-      <View style={{
-        height:200
-      }}>
+      {/* Search results header */}
+      {searchQuery && (
+        <View style={{
+          paddingHorizontal: 10,
+          marginBottom: 10
+        }}>
+          <Text style={{
+            fontFamily: 'outfit-medium',
+            fontSize: 16,
+            color: Colors.GREY
+          }}>
+            {businessList.length === 0 
+              ? `No businesses found for "${searchQuery}"`
+              : `Found ${businessList.length} business${businessList.length === 1 ? '' : 'es'} for "${searchQuery}"`
+            }
+          </Text>
+        </View>
+      )}
 
-      </View>
-      </View>
+      {businessList.length === 0 && searchQuery ? (
+        <View style={{
+          padding: 40,
+          alignItems: 'center'
+        }}>
+          <Text style={{
+            fontFamily: 'outfit-medium',
+            fontSize: 16,
+            color: Colors.GREY,
+            textAlign: 'center'
+          }}>
+            Try searching with different keywords or browse by category
+          </Text>
+        </View>
+      ) : (
+        <FlatList
+          data={businessList}
+          scrollEnabled={false}
+          showsVerticalScrollIndicator={false}
+          renderItem={({ item }) => (
+            <BusinessListCard 
+              key={item.id}
+              business={item}
+            />
+          )}
+        />
+      )}
+    </View>
   )
 }
