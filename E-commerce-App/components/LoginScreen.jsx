@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, TouchableOpacity, StatusBar } from 'react-native'
+import { View, Text, StyleSheet, TouchableOpacity, StatusBar, Image } from 'react-native'
 import React from 'react'
 import { Colors } from '@/constants/Colors'
 import * as WebBrowser from "expo-web-browser";
@@ -33,26 +33,33 @@ export default function LoginScreen() {
     <View style={styles.container}>
       <StatusBar barStyle="light-content" backgroundColor="transparent" translucent />
       
-      {/* Top Section with Icons */}
+      {/* Top Section with Image */}
       <View style={styles.topSection}>
-        <View style={styles.iconContainer}>
-          {/* Main App Icon */}
-          <View style={styles.mainIconContainer}>
-            <Ionicons name="business" size={60} color="#fff" />
-          </View>
-          
-          {/* Decorative elements */}
-          <View style={styles.decorativeElement1}>
-            <Ionicons name="star" size={16} color="#FFD700" />
-          </View>
-          <View style={styles.decorativeElement2}>
-            <Ionicons name="heart" size={14} color="#FF6B6B" />
-          </View>
-          <View style={styles.decorativeElement3}>
-            <Ionicons name="location" size={14} color="#4ECDC4" />
-          </View>
-          <View style={styles.decorativeElement4}>
-            <Ionicons name="sparkles" size={12} color="#FF9800" />
+        <Image 
+          source={{ uri: 'https://i.pinimg.com/736x/73/a6/3e/73a63e1b173ddbd5e6e1fd8a95325943.jpg' }}
+          style={styles.backgroundImage}
+          resizeMode="cover"
+        />
+        <View style={styles.overlay}>
+          <View style={styles.iconContainer}>
+            {/* Main App Icon */}
+            <View style={styles.mainIconContainer}>
+              <Ionicons name="business" size={60} color="#fff" />
+            </View>
+            
+            {/* Decorative elements */}
+            <View style={styles.decorativeElement1}>
+              <Ionicons name="star" size={16} color="#FFD700" />
+            </View>
+            <View style={styles.decorativeElement2}>
+              <Ionicons name="heart" size={14} color="#FF6B6B" />
+            </View>
+            <View style={styles.decorativeElement3}>
+              <Ionicons name="location" size={14} color="#4ECDC4" />
+            </View>
+            <View style={styles.decorativeElement4}>
+              <Ionicons name="sparkles" size={12} color="#FF9800" />
+            </View>
           </View>
         </View>
       </View>
@@ -72,7 +79,7 @@ export default function LoginScreen() {
             </Text>
 
             {/* Features */}
-            <View style={styles.featuresContainer}>
+            {/* <View style={styles.featuresContainer}>
               <View style={styles.featureItem}>
                 <Ionicons name="search" size={16} color={Colors.PRIMARY} />
                 <Text style={styles.featureText}>Discover unique businesses</Text>
@@ -87,7 +94,7 @@ export default function LoginScreen() {
                 <Ionicons name="star" size={16} color={Colors.PRIMARY} />
                 <Text style={styles.featureText}>Rate and review</Text>
               </View>
-            </View>
+            </View> */}
           </View>
 
           {/* Login Button */}
@@ -116,11 +123,31 @@ const styles = StyleSheet.create({
     backgroundColor: '#f8fafc',
   },
   topSection: {
-    flex: 0.4,
+    heigh:360,
+    flex: 2.0,
     justifyContent: 'center',
     alignItems: 'center',
     paddingTop: 60,
-    backgroundColor: Colors.PRIMARY,
+    position: 'relative',
+  },
+  backgroundImage: {
+    position:'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    width: '100%',
+    height: '100%',
+  },
+  overlay: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: 'rgba(0, 0, 0, 0.4)',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   iconContainer: {
     position: 'relative',
@@ -181,8 +208,8 @@ const styles = StyleSheet.create({
     elevation: 3,
   },
   bottomSection: {
-    flex: 1.6,
-    marginTop: 0,
+    flex: 1,
+    marginTop: -120,
   },
   contentContainer: {
     flex: 1,

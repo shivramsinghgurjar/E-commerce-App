@@ -128,7 +128,7 @@ export default function FavoritesList() {
           marginTop: 5,
           textAlign: 'center',
         }}>
-          Start adding businesses to your favorites!
+          Start adding handicrafts to your favorites!
         </Text>
       </View>
     );

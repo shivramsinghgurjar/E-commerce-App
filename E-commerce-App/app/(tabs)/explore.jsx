@@ -100,20 +100,35 @@ export default function explore() {
         <View style={{
           marginBottom: 20,
         }}>
-          <Text style={{
-            fontFamily: 'outfit-bold',
-            fontSize: 28,
-            color: '#333',
-            marginBottom: 4,
+          <View style={{
+            flexDirection: 'row',
+            alignItems: 'center',
+            marginBottom: 16,
           }}>
-            Explore More
-          </Text>
+            <View style={{
+              width: 4,
+              height: 32,
+              backgroundColor: Colors.PRIMARY,
+              borderRadius: 2,
+              marginRight: 12,
+            }} />
+            <Text style={{
+              fontFamily: 'outfit-bold',
+              fontSize: 32,
+              color: '#1a1a1a',
+              textShadowColor: 'rgba(0,0,0,0.1)',
+              textShadowOffset: { width: 0, height: 1 },
+              textShadowRadius: 2,
+            }}>
+              Explore More
+            </Text>
+          </View>
           <Text style={{
             fontFamily: 'outfit',
             fontSize: 15,
             color: Colors.GREY,
           }}>
-            Discover amazing businesses around you
+            Discover amazing handicrafts around you
           </Text>
         </View>
 
@@ -138,7 +153,7 @@ export default function explore() {
         }}>
           <Ionicons name="search" size={18} color={Colors.PRIMARY} /> 
           <TextInput 
-            placeholder='Search businesses, categories...' 
+            placeholder='Search handicrafts, categories...' 
             placeholderTextColor={Colors.GREY}
             value={searchQuery}
             onChangeText={handleSearch}

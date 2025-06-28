@@ -21,10 +21,10 @@ export default function home() {
       <Category/>
      }
      {
-      <Slider/>
+      <PopularBusiness searchQuery={searchQuery}/>
      }
      {
-      <PopularBusiness searchQuery={searchQuery}/>
+      <Slider/>
      }
      <View style={{
       height:30

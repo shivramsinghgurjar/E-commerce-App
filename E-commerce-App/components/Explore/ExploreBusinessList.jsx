@@ -18,8 +18,8 @@ export default function ExploreBusinessList({businessList, searchQuery}) {
             color: Colors.GREY
           }}>
             {businessList.length === 0 
-              ? `No businesses found for "${searchQuery}"`
-              : `Found ${businessList.length} business${businessList.length === 1 ? '' : 'es'} for "${searchQuery}"`
+              ? `No handicrafts found for "${searchQuery}"`
+              : `Found ${businessList.length} handicraft${businessList.length === 1 ? '' : 's'} for "${searchQuery}"`
             }
           </Text>
         </View>

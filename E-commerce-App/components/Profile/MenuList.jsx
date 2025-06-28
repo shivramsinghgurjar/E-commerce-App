@@ -10,11 +10,11 @@ export default function MenuList() {
     const menuList = [
         {
             id: 1,
-            name: 'My Business',
+            name: 'My Handicrafts',
             icon: require('./../../assets/images/MyBusiness.jpeg'),
             path: 'my-business',
             color: '#4CAF50',
-            description: 'Manage your business'
+            description: 'Manage your handicrafts'
         },
         {
             id: 2,
@@ -22,7 +22,7 @@ export default function MenuList() {
             icon: require('./../../assets/images/star.png'),
             path: 'favorites',
             color: '#FF9800',
-            description: 'View saved businesses'
+            description: 'View saved handicrafts'
         },
         {
             id: 3,
@@ -62,7 +62,7 @@ export default function MenuList() {
                 console.error('Error sharing:', error);
             }
         } else if (item.path === 'my-business') {
-            Alert.alert('Coming Soon', 'My Business feature will be available soon!');
+            Alert.alert('Coming Soon', 'My Handicrafts feature will be available soon!');
         } else if (item.path === 'favorites') {
             router.push('/favorites');
         } else if (item.path) {
@@ -70,11 +70,11 @@ export default function MenuList() {
         }
     }
 
-    return (
-        <View style={{
+  return (
+    <View style={{
             marginTop: 30,
             paddingHorizontal: 20,
-        }}>
+    }}>
             <Text style={{
                 fontFamily: 'outfit-bold',
                 fontSize: 20,
@@ -88,10 +88,10 @@ export default function MenuList() {
                 gap: 12,
             }}>
                 {menuList.map((item, index) => (
-                    <TouchableOpacity
+            <TouchableOpacity
                         key={item.id}
                         onPress={() => onMenuClick(item)}
-                        style={{
+            style={{
                             flexDirection: 'row',
                             alignItems: 'center',
                             padding: 16,
@@ -117,10 +117,10 @@ export default function MenuList() {
                             justifyContent: 'center',
                             alignItems: 'center',
                             marginRight: 16,
-                        }}>
+            }}>
                             <Image 
                                 source={item.icon}
-                                style={{
+                style={{
                                     width: 28,
                                     height: 28,
                                     resizeMode: 'contain',
@@ -173,6 +173,6 @@ export default function MenuList() {
                     Developed By Team GuideX @ 2025
                 </Text>
             </View>
-        </View>
-    )
+    </View>
+  )
 }

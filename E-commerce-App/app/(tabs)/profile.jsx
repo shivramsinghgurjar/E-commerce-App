@@ -48,7 +48,7 @@ export default function profile() {
       );
     }
 
-    return (
+  return (
       <View style={{
         paddingHorizontal: 20,
         paddingVertical: 15,
@@ -176,7 +176,7 @@ export default function profile() {
           borderRadius: 2,
           marginRight: 12,
         }} />
-        <Text style={{
+      <Text style={{
           fontFamily: 'outfit-bold',
           fontSize: 32,
           color: '#1a1a1a',

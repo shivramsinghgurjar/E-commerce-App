@@ -15,7 +15,9 @@ export default function Header({ onSearch, searchQuery }) {
 
   return (
     <ImageBackground 
-      source={require('./../../assets/images/decor2.jpg')}
+      source={{ uri: 'https://i.pinimg.com/736x/2c/02/7d/2c027da5526125f11fb2f139bbb18642.jpg' }}
+      // source={require('./../../assets/images/decor2.jpg')}
+      
       style={{
         padding: 20,
         paddingTop: 50,
@@ -128,7 +130,7 @@ export default function Header({ onSearch, searchQuery }) {
       }}>
         <Ionicons name="search" size={20} color={Colors.PRIMARY} /> 
         <TextInput 
-          placeholder='Search businesses, categories...' 
+          placeholder='Search handicrafts, categories...' 
           placeholderTextColor={Colors.GREY}
           value={searchQuery}
           onChangeText={onSearch}
@@ -166,7 +168,7 @@ export default function Header({ onSearch, searchQuery }) {
             fontSize: 12,
             opacity: 0.9,
           }}>
-            Discover local businesses
+            Discover local handicrafts
           </Text>
         </View>
         

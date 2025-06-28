@@ -29,8 +29,16 @@ export default function PopularBusiness({ searchQuery }) {
             console.log(doc.data());
             businesses.push({id:doc.id,...doc.data()});
         });
-        setAllBusinesses(businesses);
-        setBusinessList(businesses);
+        
+        // Sort businesses alphabetically by name
+        const sortedBusinesses = businesses.sort((a, b) => {
+            const nameA = (a.name || '').toLowerCase();
+            const nameB = (b.name || '').toLowerCase();
+            return nameA.localeCompare(nameB);
+        });
+        
+        setAllBusinesses(sortedBusinesses);
+        setBusinessList(sortedBusinesses);
     }
 
     const filterBusinesses = () => {
@@ -74,7 +82,7 @@ export default function PopularBusiness({ searchQuery }) {
               fontFamily: 'outfit-bold',
               color: '#1a1a1a',
             }}>
-              {searchQuery ? `Search Results (${businessList.length})` : 'Popular Business'}
+              {searchQuery ? `Search Results (${businessList.length})` : 'Popular Handicrafts'}
             </Text>
             
             <TouchableOpacity 
@@ -100,34 +108,34 @@ export default function PopularBusiness({ searchQuery }) {
               </Text>
               <Ionicons name="chevron-forward" size={14} color={Colors.PRIMARY} />
             </TouchableOpacity>
-       </View>
+                </View>
                 
-       {businessList.length === 0 && searchQuery ? (
-         <View style={{
-           padding: 20,
-           alignItems: 'center'
-         }}>
-           <Text style={{
-             fontFamily: 'outfit-medium',
-             fontSize: 16,
-             color: Colors.GREY,
-             textAlign: 'center'
-           }}>
-             No businesses found for "{searchQuery}"
-           </Text>
-         </View>
-       ) : (
-         <FlatList
-           data={businessList}
-           horizontal={true}
-           showsHorizontalScrollIndicator={false}
-           renderItem={({item,index})=>(
-             <PopularBusinessCard
-             key={index}
-             business={item}/>
-           )} 
-         />
-       )}
-    </View>
+                {businessList.length === 0 && searchQuery ? (
+                  <View style={{
+                    padding: 20,
+                    alignItems: 'center'
+                  }}>
+                    <Text style={{
+                      fontFamily: 'outfit-medium',
+                      fontSize: 16,
+                      color: Colors.GREY,
+                      textAlign: 'center'
+                    }}>
+             No handicrafts found for "{searchQuery}"
+                    </Text>
+                  </View>
+                ) : (
+                  <FlatList
+                      data={businessList}
+                      horizontal={true}
+                      showsHorizontalScrollIndicator={false}
+                      renderItem={({item,index})=>(
+                        <PopularBusinessCard
+                        key={index}
+                        business={item}/>
+                      )} 
+                  />
+                )}
+        </View>
   )
 }
